@@ -19,3 +19,16 @@
   })
 end
 
+10.times do 
+  School.create({
+    name: Faker::Company.name,
+    address: Faker::Address.full_address,
+    email: Faker::Internet.email,
+    website: Faker::Internet.domain_name,
+  })
+end
+
+Vendor.all.each do |vendor|
+  vendor.school = School.all.sample
+  vendor.save
+end

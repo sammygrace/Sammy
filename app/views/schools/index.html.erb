@@ -1,0 +1,8 @@
+<h2>Schools: <%= @schools.count %></h3>
+<% @schools.each do |school| %>
+  <p><%= school.name %> (<%= school.vendors.count %>)</p>
+  <p><%= school.email %></p>
+  <p><%= school.address %></p>
+  <p><%= school.website %></p>
+  <br>
+<% end%>
