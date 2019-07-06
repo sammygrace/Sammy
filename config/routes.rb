@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-  get "/schools" => "schools#index"
-  get "/schools/:id" => "schools#show", as: :hello
+  resources :schools do 
+    resources :vendors
+  end
 
   resources :comments
   resources :vendors
+  resources :schools
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

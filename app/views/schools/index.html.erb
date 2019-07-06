@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <tr><% @schools.each do |school| %></tr>
-      <td><%= link_to school.name, hello_path(school) %></td>
+      <td><%= link_to school.name, school_path(school) %></td>
       <td><%= school.vendors.count %></td>
     <% end%>
   </tbody>

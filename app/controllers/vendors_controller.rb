@@ -4,7 +4,9 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.json
   def index
-    @vendors = Vendor.where("content ilike ? or address ilike ?", "%#{params[:find]}%", "%#{params[:find]}%")
+    @school = School.find_by(id: params[:school_id])
+    @vendors = @school.try(:vendors) || Vendor
+    @vendors = @vendors.search(params[:find])
   end
 
   # GET /vendors/1
