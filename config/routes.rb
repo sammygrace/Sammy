@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get "/schools" => "schools#index"
+  get "/schools/:id" => "schools#show", as: :hello
 
   resources :comments
   resources :vendors

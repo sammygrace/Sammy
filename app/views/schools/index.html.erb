@@ -1,8 +1,21 @@
-<h2>Schools: <%= @schools.count %></h3>
-<% @schools.each do |school| %>
-  <p><%= school.name %> (<%= school.vendors.count %>)</p>
-  <p><%= school.email %></p>
-  <p><%= school.address %></p>
-  <p><%= school.website %></p>
-  <br>
-<% end%>
+<p id="notice"><%= notice %></p>
+
+<section class="banner">
+<hr>
+<h1>Schools</h1>
+</section>
+
+<h2 style="color:green">There are <%= @schools.count %> schools.</h2>
+
+<table>
+  <thead>
+    <th>School</th>
+    <th>Vendors</th>
+  </thead>
+  <tbody>
+    <tr><% @schools.each do |school| %></tr>
+      <td><%= link_to school.name, hello_path(school) %></td>
+      <td><%= school.vendors.count %></td>
+    <% end%>
+  </tbody>
+</table>
