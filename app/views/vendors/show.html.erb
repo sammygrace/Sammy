@@ -40,4 +40,4 @@
 </table>
 <%= render "comments/form", comment: @vendor.comments.new %> 
 <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+<%= link_to 'Back', school_vendors_path(@vendor.school) %>

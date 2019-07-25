@@ -1,30 +1,27 @@
 class VendorsController < ApplicationController
+  before_action :authorize_page, only: [:edit, :new, :update, :destroy]
   before_action :set_vendor, only: [:show, :edit, :update, :destroy]
 
-  # GET /vendors
-  # GET /vendors.json
   def index
     @school = School.find_by(id: params[:school_id])
     @vendors = @school.try(:vendors) || Vendor
     @vendors = @vendors.search(params[:find])
   end
 
-  # GET /vendors/1
-  # GET /vendors/1.json
   def show
   end
 
-  # GET /vendors/new
   def new
     @vendor = Vendor.new
   end
 
-  # GET /vendors/1/edit
   def edit
+    if current_admin.id != @vendor.user_id
+      flash[:notice] = "Sorry, you are not authorized to access this page."
+      redirect_to root_path
+    end
   end
 
-  # POST /vendors
-  # POST /vendors.json
   def create
     @vendor = Vendor.new(vendor_params)
 
@@ -39,8 +36,6 @@ class VendorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vendors/1
-  # PATCH/PUT /vendors/1.json
   def update
     respond_to do |format|
       if @vendor.update(vendor_params)
@@ -53,8 +48,6 @@ class VendorsController < ApplicationController
     end
   end
 
-  # DELETE /vendors/1
-  # DELETE /vendors/1.json
   def destroy
     @vendor.destroy
     respond_to do |format|
@@ -63,13 +56,18 @@ class VendorsController < ApplicationController
     end
   end
 
+  def authorize_page
+    unless admin_signed_in?
+      flash[:notice] = "Sorry, you are not authorized to access this page."
+      redirect_to root_path
+    end
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_vendor
       @vendor = Vendor.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
       params.require(:vendor).permit(:name, :email, :phone, :address, :website, :description, :content)
     end
