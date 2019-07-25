@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'devise'
+
 gem 'faker'
 gem 'pry'
 gem 'pry-nav'

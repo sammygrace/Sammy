@@ -1,6 +1,6 @@
 class Vendor < ApplicationRecord
   has_many :comments
-  belongs_to :school
+  belongs_to :school, optional: true
 
   def self.search(find)
     find = "%#{find}%"
