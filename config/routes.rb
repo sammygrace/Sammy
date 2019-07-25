@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :admins
   root "schools#index"
 
   resources :schools do 

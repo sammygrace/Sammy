@@ -30,8 +30,7 @@ body {
   font-family: 'Raleway', sans-serif;
   background-color: #ddeedd;
 }
-.verse {
-  font-size: 15px;
-  background-color: green;
-  color: white;
+
+.alert {
+  color: green;
 }
