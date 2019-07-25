@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+.title {
+  color: white;
+  font-family: 'Lobster Two', cursive;
+  font-size: 40px;
+  text-shadow: 1px 2px 5px teal;
+}
+section.banner {
+  text-align: center;
+  padding: 10px 10px 20px 20px;
+  background-image: url(https://inhabitat.com/wp-content/blogs.dir/1/files/2016/07/California-Redwood-Trees-889x592.jpg);
+  background-size:cover;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #ddeedd;
+}
+.verse {
+  font-size: 15px;
+  background-color: green;
+  color: white;
+}
