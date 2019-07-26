@@ -1,6 +1,5 @@
 class VendorsController < ApplicationController
-  before_action :authorize_page, only: [:edit, :new, :update, :destroy]
-  before_action :set_vendor, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @school = School.find_by(id: params[:school_id])
