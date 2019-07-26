@@ -1,10 +1,12 @@
 class VendorsController < ApplicationController
+  include Pagy::Backend
   load_and_authorize_resource
 
   def index
     @school = School.find_by(id: params[:school_id])
     @vendors = @school.try(:vendors) || Vendor
     @vendors = @vendors.search(params[:find])
+    @pagy, @vendors = pagy(@vendors, items: 4)
   end
 
   def show

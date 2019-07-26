@@ -8,7 +8,12 @@
 <%= render 'search_form'  %>
 
 <section class="content">
-  <h2 style="color:green;"><%= @vendors.count %> vendors.</h2>
+  <h2 style="color:green;">
+    <%== pagy_info(@pagy) %>
+  </h2>
+
+  <p><%== pagy_nav(@pagy) %></p>
+
 
 <table>
   <thead>
