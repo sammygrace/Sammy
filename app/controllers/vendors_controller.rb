@@ -6,6 +6,7 @@ class VendorsController < ApplicationController
     @school = School.find_by(id: params[:school_id])
     @vendors = @school.try(:vendors) || Vendor
     @vendors = @vendors.search(params[:find])
+    @vendors = @vendors.near(params[:location], 100) if location.present?
     @pagy, @vendors = pagy(@vendors, items: 4)
   end
 
