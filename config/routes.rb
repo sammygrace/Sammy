@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :vendors
   end
 
-  resources :comments
+  resources :vendors do
+    post :claim, on: :member
+  end
+
   resources :vendors
+  resources :comments
   resources :schools
 end

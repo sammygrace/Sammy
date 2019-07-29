@@ -65,6 +65,15 @@ class VendorsController < ApplicationController
     end
   end
 
+  def claim
+    if @vendor.claim!(current_user)
+      notice = "Vendor successfully claimed."
+    else
+      notice = "Sorry, vendor could not be claimed."
+    end
+    redirect_to vendor_path(@vendor), notice: notice
+  end
+
   private
     def set_vendor
       @vendor = Vendor.find(params[:id])
